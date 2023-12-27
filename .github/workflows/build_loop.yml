@@ -66,6 +66,10 @@ jobs:
 
         
       
+      # Sync the GitHub runner clock with the Windows time server (workaround as suggested in https://github.com/actions/runner/issues/2996)
+      - name: Sync clock
+        run: sudo sntp -sS time.windows.com
+      
       # Build signed Loop IPA file
       - name: Fastlane Build & Archive
         run: fastlane build_loop
